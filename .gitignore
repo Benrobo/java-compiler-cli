@@ -1,4 +1,6 @@
 /node_modules
 
+/executable
+
 /lib/compile.js
 /lib/generateSourceFile.js
