@@ -1,36 +1,26 @@
-### J-Compiler CLI
+## 🎉🎉 LagrangeInterpolation 
+### Java Code compiler written in python.
 
-#### This is a basic nodejs cli compiler app meant to compile java codes making use of the default java compiler.
+This is yet another compiler meant for babcock students project which was created using pure python along with the default java compiler. It meant to compile and run the Lagrange Interpolation Mathematical Formular
 
-### Technologies Used
+<img src="https://raw.githubusercontent.com/Benrobo/LagrangeInterpolation-Compiler/main/langrange.PNG">
 
-- Inquirer
-  - A collection of common interactive command line user interfaces. It enables you collect input from the users within the terminal. [Inquirer](https://github.com/SBoudrias/Inquirer.js)
-- Commander
-  - A node module which will help us parse process. argv in much easy and better way while Inquirer. js [Commander](https://github.com/tj/commander.js) will help us design interactive CLI application.
+### ✔🌹 Running
+As you well know that this is a python based compiler, running this means you must have the stable version of python installed on your PC. [Download Here](https://www.python.org).
 
-#### Running the cli
+1. Make sure you have python installed
 
-Running the cli can be archeive in 2-steps
+2. Clone or download the repo
 
-1. Enabling the CLI globally by running the following command within the cli directory
-
-```javascript
-    npm i -g
-    //or
-    npm install --global
+3. Move into the repo directory on your pc
+```python
+    cd LagrangeInterpolation-Compiler
 ```
 
-and after installing it, you can simply run the cli using
-
-```javascript
-jcompile;
+4. Run the <code>app.py</code> file
+ 
+```python
+    python app.py
 ```
 
-2. Running the cli locally on your computer via nodejs.
-
-```javascript
-    node app.js
-```
-
-🎉 An that it.
+5. 🎉🎉❤ Youre ready to use it, follow the instructions provided by the compiler.
