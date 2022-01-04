@@ -9,8 +9,13 @@ program.version(" jcompile version 0.0.1");
 const {
   askUserForInputs,
   askUserForJavaInputs,
+  askUserForInputsOS,
 } = require("./lib/askUserInput");
-const { compileJavaCode, compileJavaCodeWithInput } = require("./lib/cli");
+const {
+  compileJavaCode,
+  compileJavaCodeWithInput,
+  compileJavaCodeOS,
+} = require("./lib/cli");
 const { colors, ANCII } = require("./lib/util");
 
 // console.clear()
@@ -25,11 +30,17 @@ program
   .option("-h, --help", "display usage information for this cli")
   .option("-c, --compile", "compile java code without inputs")
   .option("-c-i, --compile-input", "compile java code with inputs")
+  .option(
+    "-f, --compile-file",
+    "This command is specifically for compiling java codes based on ther operating system. by compiling the code from a file"
+  )
   .option("-q, --quit", "quit the jcompile cli");
 
 program.parse(process.argv);
 
 const options = program.opts();
+
+console.log(options);
 
 if (options.help || options.h) {
   colors.white(`
@@ -42,6 +53,8 @@ if (options.help || options.h) {
     -c  --compile : Compile java codes without getting users input.
 
     -c-i --compile-input : Compile java codes with users input.
+
+    -cf --compile-file : This command is specifically for compiling java codes based on ther operating system. by compiling the code from a file.
 
     -q --quit : quit the cli
 
@@ -91,6 +104,27 @@ if (options.help || options.h) {
     });
   }
   run();
+} else if (options.f || options.compileFile) {
+  // compile java codes with inputs
+  async function run() {
+    let { filename } = await askUserForInputsOS();
+
+    compileJavaCodeOS(filename, (data) => {
+      // get the data returned from compiling the code written
+      const result = data;
+
+      if (data.output) {
+        console.log("\n");
+        colors.green(data.output + "\n");
+        return true;
+      } else {
+        console.log("\n");
+        colors.red(data.errorMsg + "\n");
+        return true;
+      }
+    });
+  }
+  run();
 } else {
   colors.white(`
       usage: jcompile [option] Options and arguments (and corresponding environment variables):
@@ -102,6 +136,8 @@ if (options.help || options.h) {
       -c  --compile : Compile java codes without getting users input.
   
       -c-i --compile-input : Compile java codes with users input.
+
+      -f --compile-file : This command is specifically for compiling java codes based on ther operating system. by compiling the code from a file.
   
       -q --quit : quit the cli
   
