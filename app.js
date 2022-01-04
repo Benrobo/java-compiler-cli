@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-const figlet = require("figlet");
-const path = require("path");
 // the below module enable us to deal with commands in our compiler-cli
 const { program } = require("commander");
 program.version(" jcompile version 0.0.1");
@@ -11,6 +9,7 @@ const {
   askUserForJavaInputs,
   askUserForInputsOS,
 } = require("./lib/askUserInput");
+
 const {
   compileJavaCode,
   compileJavaCodeWithInput,
