@@ -14,7 +14,7 @@ const {
 const {
   compileJavaCode,
   compileJavaCodeWithInput,
-  compileJavaCodeOS,
+  compileJavaFile,
 } = require("./lib/cli");
 const { colors, ANCII } = require("./lib/util");
 
@@ -109,7 +109,7 @@ if (options.help || options.h) {
   async function run() {
     let { filename } = await askUserForInputsOS();
 
-    compileJavaCodeOS(filename, (data) => {
+    compileJavaFile(filename, (data) => {
       // get the data returned from compiling the code written
       const result = data;
 
